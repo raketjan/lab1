@@ -2,7 +2,11 @@
 #include <cstddef>   // för size_t
 
 
+
 class Vector {
+  size_t size;
+ unsigned int * v1;
+
 public:
   explicit Vector(size_t s);
 
@@ -10,10 +14,9 @@ public:
   Vector(const Vector & ref);
 
   // Överlagrad = operator
-  Vector & operator=(const Vector & v2);  
+  Vector & operator=( Vector & v2);
 
-
-private:
-  int * v;
-  size_t size;
+  // Överlagrad [] operator
+  unsigned int & operator[](size_t i);
+  const unsigned int & operator[](size_t i) const;  
 }; 
