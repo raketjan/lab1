@@ -1,23 +1,26 @@
+#ifndef __BAJS__
+#define __BAJS__
+
 #include <iostream>
-#include <cstddef>   // för size_t
-
-
-
-class Vector {
+#include <cstddef>
+#include <stdlib.h>
+#include <stdexcept>
+template <class T>
+class Vector{
   size_t size;
- unsigned int * v1;
-
-public:
-  explicit Vector(size_t s);
-
+  T * v1;
+  
+ public:
+  explicit Vector(size_t); 
   // Kopieringskonstruktor
-  Vector(const Vector & ref);
-
+  Vector(const Vector<T> &);
+  
   // Överlagrad = operator
-  Vector & operator=( Vector & v2);
-
+  Vector<T> & operator=(Vector<T> &);
+  
   // Överlagrad [] operator
-  unsigned int & operator[](size_t i);
-  const unsigned int & operator[](size_t i) const;  
+  T & operator[](size_t i);
+  const T & operator[](size_t i) const;  
 };
-//#include "Vector.cpp"
+#include "Vector.cpp"
+#endif // __BAJS__
