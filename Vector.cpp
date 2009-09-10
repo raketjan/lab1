@@ -11,7 +11,11 @@ Vector::Vector(size_t s) : size(s), v1(new unsigned int[s])  {
   }
 }
 
-Vector::Vector(const Vector & ref) {}
+Vector::Vector(const Vector & ref):size(ref.size),v1(new unsigned int[ref.size]){
+  for(int i=0;i<ref.size;++i){
+    v1[i]=ref[i];
+  }
+}
 
 Vector & Vector::operator=(Vector & v2) {
   // ta hand om selfassignment (a = a)
@@ -65,4 +69,8 @@ int main() {
 
   std::cout << vec1[0] << " " << vec1[1] << " " << vec1[2] << std::endl;
 
+  Vector vec3(vec1);
+  vec3[0]=333;
+  std::cout << vec1[0] << vec3[0] << " " << vec1[2] << vec3[2] << std::endl;
+  
 }; 

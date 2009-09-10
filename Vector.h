@@ -19,4 +19,5 @@ public:
   // Överlagrad [] operator
   unsigned int & operator[](size_t i);
   const unsigned int & operator[](size_t i) const;  
-}; 
+};
+//#include "Vector.cpp"
