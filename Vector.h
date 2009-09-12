@@ -16,11 +16,14 @@ class Vector{
   Vector(const Vector<T> &);
   
   // Överlagrad = operator
-  Vector<T> & operator=(Vector<T> &);
+  Vector<T> & operator=(Vector<T> & v2);
   
   // Överlagrad [] operator
   T & operator[](size_t i);
+
   const T & operator[](size_t i) const;  
 };
+
 #include "Vector.cpp"
+
 #endif // __BAJS__
