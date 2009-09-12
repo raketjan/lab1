@@ -2,7 +2,10 @@
 
 int main() {
   Vector<int> vec1(3), vec2(5);
-
+  Vector<const char *> vecs(3);
+  vecs[0]="hej";
+  std::cout << "vecs[0] " << vecs[0] << std::endl;
+  
   vec1[1] = 17;
 
   vec2[0] = 3; 
