@@ -38,6 +38,7 @@ class Vector{
   void push_back(T);
   void insert(size_t,T);
   void erase(size_t);
+  void clear(void);
 };
 
 #include "Vector.cpp"

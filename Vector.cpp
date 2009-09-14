@@ -139,7 +139,14 @@ void Vector<T>::erase(size_t index){
   for(int i = index+1;i<vector_size-1;i++){
     array[i]=array[i+1];
   }
+  // Not needed
+  array[vector_size]=T();
   vector_size--;
+}
+
+template <class T>
+void Vector<T>::clear(void){
+  vector_size=0;
 }
 /*
 template <class T>

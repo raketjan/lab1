@@ -62,5 +62,10 @@ public:
     TS_ASSERT_EQUALS(v.size(), 0);
   }
 
+  void test_clear(){
+    Vector<int> v(2);
+    v.clear();
+    TS_ASSERT_EQUALS(v.size(), 0);
+  }
 
 };
