@@ -38,4 +38,17 @@ public:
     TS_ASSERT_EQUALS(v[4], 4);
     TS_ASSERT_EQUALS(v.size(), 6);
   }
+  
+  void test_insert(){
+    Vector<int> v(2);
+    v.insert(1,1);
+    TS_ASSERT_EQUALS(v[1], 1);   
+    v.insert(0,1000);
+    TS_ASSERT_EQUALS(v[0], 1000);   
+    //TS_ASSERT_EQUALS(v[2], 1);   
+    /*
+    v.insert(4,222);
+    TS_ASSERT_EQUALS(v[4], 222);   
+    */
+  }
 };

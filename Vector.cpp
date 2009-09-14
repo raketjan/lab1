@@ -106,6 +106,31 @@ void Vector<T>::push_back(T element){
     
 }
 
+template <class T>
+void Vector<T>::insert(size_t index,T element){
+  T * tmp_array;
+  if(vector_size>=array_size){ 
+    tmp_array = new T[array_size*2];
+    array_size*=2;
+  }else{
+    tmp_array = new T[array_size];
+  }
+  
+
+  for(int i=0;i<index;++i){
+    tmp_array[i]=array[i]; 
+  }
+  
+  tmp_array[index]=element;
+  for(int i=index;i<vector_size;++i){
+    tmp_array[i+1]=array[i]; 
+  }
+
+  delete [] array;
+  array = tmp_array;
+  vector_size++;
+}
+
 /*
 template <class T>
 void Vector<T>::setSize(size_t new_size){
