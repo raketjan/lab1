@@ -3,8 +3,6 @@
  * Slit den med hälsan...  
 */
 
-
-
 /* Default */
 template <class T>
 Vector<T>::Vector():vector_size(0),array_size(8),array(new T[8]){
@@ -148,21 +146,18 @@ template <class T>
 void Vector<T>::clear(void){
   vector_size=0;
 }
-/*
+
 template <class T>
-void Vector<T>::setSize(size_t new_size){
-  T * tmp_vec;
-  if(new_size > getSize()){
-
-    tmp_vec = new T[new_size];
-
-    for(int i=0; i<vector_size; ++i){
-      tmp_vec[i]=array[i];
+void Vector<T>::sort(bool ascending = true){
+  std::sort(array, array+vector_size);
+  T * tmp;
+  if(!ascending){    
+    tmp = new T[array_size];
+    for(int i = 0;i<vector_size; i++){
+      tmp[vector_size-i-1]=array[i];
     }
-
-    array=tmp_vec;
+    delete [] array;
+    array=tmp;
   }
-  delete [] tmp_vec;
-  vector_size=new_size;
 }
-*/
+

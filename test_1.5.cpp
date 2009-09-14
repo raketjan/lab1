@@ -68,4 +68,39 @@ public:
     TS_ASSERT_EQUALS(v.size(), 0);
   }
 
+  void test_sort(){
+    Vector<int> v(7);
+    v.sort(true);
+    TS_ASSERT_EQUALS(v[0], 0);
+    v[0]=6;
+    v[1]=19;
+    v[2]=1;
+    v[3]=11;
+    v[4]=77;
+    v[5]=6;
+    v[6]=6;
+    v.sort(true);
+    TS_ASSERT_EQUALS(v[0], 1);
+    TS_ASSERT_EQUALS(v[1], 6);
+    TS_ASSERT_EQUALS(v[2], 6);
+    TS_ASSERT_EQUALS(v[3], 6);
+    TS_ASSERT_EQUALS(v[4], 11);
+    TS_ASSERT_EQUALS(v[5], 19);
+    TS_ASSERT_EQUALS(v[6], 77);
+    v[0]=6;
+    v[1]=19;
+    v[2]=1;
+    v[3]=11;
+    v[4]=77;
+    v[5]=6;
+    v[6]=6;
+    v.sort(false);
+    TS_ASSERT_EQUALS(v[0], 77);
+    TS_ASSERT_EQUALS(v[1], 19);
+    TS_ASSERT_EQUALS(v[2], 11);
+    TS_ASSERT_EQUALS(v[3], 6);
+    TS_ASSERT_EQUALS(v[4], 6);
+    TS_ASSERT_EQUALS(v[5], 6);
+    TS_ASSERT_EQUALS(v[6], 1);
+  }
 };

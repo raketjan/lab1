@@ -39,6 +39,9 @@ class Vector{
   void insert(size_t,T);
   void erase(size_t);
   void clear(void);
+  void sort(bool);
+  //  bool descending(T &,T &);
+
 };
 
 #include "Vector.cpp"
