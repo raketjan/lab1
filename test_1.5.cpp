@@ -16,21 +16,26 @@ public:
   }
   void test_size(){
     Vector<int> v(3);
-    TS_ASSERT_EQUALS(v.getSize(), 3);  
+    TS_ASSERT_EQUALS(v.size(), 3);  
   }
   void test_empty(){
     Vector<int> v(0);
-    TS_ASSERT_EQUALS(v.getSize(), 0);  
+    TS_ASSERT_EQUALS(v.size(), 0);  
   }
-  void test_newsize(){
-    Vector<int> v(3);
-    v[2]=5;
-    v[1]=1;
-    v.setSize(5);
-    TS_ASSERT_EQUALS(v[4], 0);
-    TS_ASSERT_EQUALS(v[2], 5);
-    v.setSize(2);
-    TS_ASSERT_EQUALS(v[1], 1);    
-    TS_ASSERT_EQUALS(v.getSize(), 2);  
+  void test_push_back(){
+    Vector<int> v(2);
+    TS_ASSERT_EQUALS(v.get_array_size(), 4);
+    v.push_back(2);
+    TS_ASSERT_EQUALS(v[2], 2);
+    TS_ASSERT_EQUALS(v.get_array_size(), 4);
+    TS_ASSERT_EQUALS(v.size(), 3);
+    TS_ASSERT_EQUALS(v.get_array_size(), 4);
+    v.push_back(3);
+    v.push_back(4);
+    TS_ASSERT_EQUALS(v.get_array_size(), 8);
+    v.push_back(5);
+    TS_ASSERT_EQUALS(v.get_array_size(), 8);
+    TS_ASSERT_EQUALS(v[4], 4);
+    TS_ASSERT_EQUALS(v.size(), 6);
   }
 };

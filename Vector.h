@@ -7,9 +7,11 @@
 #include <stdexcept>
 template <class T>
 class Vector{
-  size_t size;
-  int next_empty;
-  T * v1;
+  size_t vector_size;
+  size_t array_size;
+  /*const size_t DEFAULT_SIZE(8);
+    const size_t ENLARGE_FACTOR(2);*/
+  T * array;
   
  public:
   Vector();
@@ -19,7 +21,7 @@ class Vector{
   Vector(const Vector<T> &);
   
   // Överlagrad = operator
-  Vector<T> & operator=(Vector<T> & v2);
+  Vector<T> & operator=(Vector<T> &);
   
   // Överlagrad [] operator
   T & operator[](size_t);
@@ -27,10 +29,12 @@ class Vector{
   /* Behövs för tex std::cout */
   const T & operator[](size_t) const;  
 
-  const int getSize() const;
-  
+  const int size(void) const;
+  const int get_array_size(void) const;
+  /*
   void setSize(size_t);
-  
+  */
+  void enlargeArray(void);
   void push_back(T);
 };
 
