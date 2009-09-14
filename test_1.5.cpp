@@ -1,6 +1,6 @@
 #include <cxxtest/TestSuite.h>
 
-#include "Vector.h"
+#include "vector.h"
 
 class MyTestSuite : public CxxTest::TestSuite 
 {
@@ -58,8 +58,7 @@ public:
     TS_ASSERT_EQUALS(v.size(), 1);
     v.erase(0);
     TS_ASSERT_EQUALS(v.size(), 0);   
-    v.erase(0);
-    TS_ASSERT_EQUALS(v.size(), 0);
+    TS_ASSERT_THROWS(v.erase(0), std::out_of_range);
   }
 
   void test_clear(){
@@ -102,5 +101,13 @@ public:
     TS_ASSERT_EQUALS(v[4], 6);
     TS_ASSERT_EQUALS(v[5], 6);
     TS_ASSERT_EQUALS(v[6], 1);
+  }
+  void test_strings(){
+    Vector<std::string> v(3,"hej");
+    v.insert(1,"då");
+    TS_ASSERT_EQUALS(v[1], "då");
+    Vector<std::string> v2(2,"hoho");
+    v2=v;
+    TS_ASSERT_EQUALS(v2[1], "då");
   }
 };
