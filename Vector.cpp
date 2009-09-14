@@ -131,6 +131,16 @@ void Vector<T>::insert(size_t index,T element){
   vector_size++;
 }
 
+template <class T>
+void Vector<T>::erase(size_t index){
+  if(index<0 || index>=vector_size){
+    return;
+  }
+  for(int i = index+1;i<vector_size-1;i++){
+    array[i]=array[i+1];
+  }
+  vector_size--;
+}
 /*
 template <class T>
 void Vector<T>::setSize(size_t new_size){

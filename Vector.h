@@ -37,6 +37,7 @@ class Vector{
   void enlargeArray(void);
   void push_back(T);
   void insert(size_t,T);
+  void erase(size_t);
 };
 
 #include "Vector.cpp"
