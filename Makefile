@@ -1,10 +1,12 @@
 CC=g++
-VSN=1.5
+VSN=1.4
 
 test:
 	cxxtest/cxxtestgen.py --error-printer -o $(VSN).cpp test_$(VSN).cpp
 	$(CC) -o test_$(VSN) -I cxxtest/ $(VSN).cpp
 
+test_int:
+	
 alex_fet:
 	$(CC) -o cprog09lab15 cprog09lab15.cpp
 

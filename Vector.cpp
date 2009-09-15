@@ -32,7 +32,7 @@ Vector<T>::Vector(const Vector<T> & ref):vector_size(ref.vector_size),array_size
 
 /* = */
 template <class T>
-Vector<T> & Vector<T>::operator=(Vector<T> & v2) {
+Vector<T> & Vector<T>::operator=(const Vector<T> & v2) {
   // ta hand om selfassignment (a = a)
   if (&v2 == this) return *this;
 
@@ -81,32 +81,18 @@ const int Vector<T>::get_array_size(void) const{
 }
 
 template <class T>
-void Vector<T>::enlargeArray(void){
-  
-  T *tmp_vec = new T[array_size*2];
-  
-  for(int i=0; i<vector_size; ++i){
-    tmp_vec[i]=array[i];
-  }
-  delete [] array;
-  array=tmp_vec;
-  array_size*=2;
-}
-
-template <class T>
 void Vector<T>::push_back(T element){
-  if(vector_size>=array_size){
-    enlargeArray();
-  }
-  
-  array[vector_size]=element;
-  vector_size++;
-    
+   insert(vector_size,element);
 }
 
 template <class T>
 void Vector<T>::insert(size_t index,T element){
   T * tmp_array;
+
+  if(index<0 || index>vector_size){
+    throw std::out_of_range("out_of_range");
+  }
+
   if(vector_size>=array_size){ 
     tmp_array = new T[array_size*2];
     array_size*=2;
@@ -132,7 +118,7 @@ void Vector<T>::insert(size_t index,T element){
 template <class T>
 void Vector<T>::erase(size_t index){
   if(index<0 || index>=vector_size){
-    return;
+    throw std::out_of_range("out_of_range");
   }
   for(int i = index+1;i<vector_size-1;i++){
     array[i]=array[i+1];
