@@ -3,6 +3,9 @@
 
 #include "vector.h"
 
+Vector::~Vector(){
+  delete [] v1;
+}
 
 Vector::Vector(size_t s) : vector_size(s), v1(new unsigned int[s])  {
   for (int i = 0; i<s; ++i) {

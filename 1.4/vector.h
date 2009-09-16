@@ -7,6 +7,7 @@ class Vector {
   unsigned int * v1;
 
 public:
+  ~Vector();
   explicit Vector(size_t);
   
   // Kopieringskonstruktor

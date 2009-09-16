@@ -10,5 +10,7 @@ test_int:
 alex_fet:
 	$(CC) -o cprog09lab14 vector.cpp cprog09lab14.cpp
 
+submit:
+	submit.py -p cprog09lab14 vector.h vector.cpp cprog09lab14.cpp	
 clean:
 	rm -f *.o test_$(VSN)
