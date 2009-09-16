@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstddef>   // för size_t
-
-
+#include <stdexcept>
 
 class Vector {
   size_t size;

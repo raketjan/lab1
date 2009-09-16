@@ -2,7 +2,6 @@
    Slit den med hälsan...  */
 
 #include "vector.h"
-#include <stdexcept>
 
 
 Vector::Vector(size_t s) : size(s), v1(new unsigned int[s])  {
@@ -23,31 +22,29 @@ Vector & Vector::operator=(const Vector & v2) {
 
   // fall 1 lika stora
   if (size == v2.size) {  
-  for (int i = 0; i < v2.size; ++i) {
-    v1[i] = v2[i];
-    std::cout << v2[i] << " ";
+    for (int i = 0; i < v2.size; ++i) {
+      v1[i] = v2[i];
   }
-  std::cout << std::endl;
-return *this;
+    return *this;
   } else {
-
+    
     //olika stora, skaffa nytt utrymme
     delete [] v1;
     v1 = new unsigned int[v2.size];
     size = v2.size;
     for (int i = 0; i < v2.size; ++i) {
       v1[i] = v2[i];
-  }
+    }
     return *this;
-}
+  }
 }
 
-
-  unsigned  int & Vector::operator[](size_t index) {
+unsigned  int & Vector::operator[](size_t index) {
   if (index < 0 || index >= size) throw std::out_of_range("out_of_range");
-  else return *(v1 + index);
+  else return v1[index];
 }
- const unsigned  int & Vector::operator[](size_t index) const {
+
+const unsigned  int & Vector::operator[](size_t index) const {
   if (index < 0 || index >= size) throw std::out_of_range("out_of_range");
-  else return *(v1 + index);
- }
+  else return v1[index];
+}
