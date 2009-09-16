@@ -3,12 +3,12 @@
 #include <stdexcept>
 
 class Vector {
-  size_t size;
+  size_t vector_size;
   unsigned int * v1;
 
 public:
   explicit Vector(size_t);
-
+  
   // Kopieringskonstruktor
   Vector(const Vector &);
 
@@ -18,5 +18,7 @@ public:
   // Överlagrad [] operator
   unsigned int & operator[](size_t);
   const unsigned int & operator[](size_t i) const;  
+  const size_t size() const;
+
 };
 
