@@ -59,12 +59,18 @@ public:
     v.erase(0);
     TS_ASSERT_EQUALS(v.size(), 0);   
     TS_ASSERT_THROWS(v.erase(0), std::out_of_range);
-  }
+    Vector<const char *> v2(1000,"hoho");
+    v2.erase(50);
+    TS_ASSERT_EQUALS(v2.size(), 999);
+
+}
 
   void test_clear(){
     Vector<int> v(2);
     v.clear();
     TS_ASSERT_EQUALS(v.size(), 0);
+    Vector<const char *> v2;
+    TS_ASSERT_EQUALS(v2.size(), 0);
   }
 
   void test_sort(){
