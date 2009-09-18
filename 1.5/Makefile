@@ -19,10 +19,9 @@ valgrind_erik:test_erik
 
 alex_fet:
 	$(CC) $(FLAGS) -o cprog09lab15 cprog09lab15.cpp
-main:
-	$(CC) $(FLAGS) -o test_main test_main.cpp
 
 submit:
 	submit.py -p cprog09lab15 vector.h cprog09lab15.cpp
 clean:
-	rm -f *.o test_$(VSN) cprog09lab15
+	rm -f *.o test_$(VSN) cprog09lab15 vector_test_runner.cpp $(VSN).cpp
+	rm -r test_$(VSN) vector_test_runner 
