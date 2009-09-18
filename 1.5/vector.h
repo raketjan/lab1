@@ -15,7 +15,7 @@ class Vector{
   T * array;
   
  public:
-  Vector();
+  Vector(void);
   explicit Vector(size_t);
   Vector(size_t, T);
   Vector(const Vector<T> &);
@@ -66,18 +66,18 @@ Vector<T>::~Vector(){
 
 /* Default */
 template <class T>
-Vector<T>::Vector():vector_size(0),array_size(8),array(new T[8]){
+Vector<T>::Vector(void):vector_size(0),array_size(8),array(new T[8]){  
 }
 
 template <class T>
-Vector<T>::Vector(size_t s,T ival) : vector_size(s),array_size(s), array(new T[s]) {
+Vector<T>::Vector(size_t s,T ival) : vector_size(s),array_size(s*2), array(new T[s*2]) {
   for (size_t i = 0; i<s; ++i) {
     array[i] = T(ival);
   }
 }
 
 template <class T>
-Vector<T>::Vector(size_t s) : vector_size(s),array_size(s), array(new T[s]) {
+Vector<T>::Vector(size_t s) : vector_size(s),array_size(s*2<8?8:s*2), array(new T[s*2<8?8:s*2]) {
   for (size_t i = 0; i<s; ++i) {
     array[i] = T();
   }
@@ -146,7 +146,27 @@ const int Vector<T>::get_array_size(void) const{
 
 template <class T>
 void Vector<T>::push_back(T element){
-   insert(vector_size,element);
+ 
+ 
+   
+  if(vector_size>=array_size){
+    T * tmp_array; 
+    tmp_array = new T[array_size*2];
+    array_size*=2;
+ for(size_t i=0;i<vector_size;++i){
+    tmp_array[i]=array[i];
+  }
+
+    tmp_array[vector_size] = element;
+    delete [] array;
+    array = tmp_array;
+    ++vector_size;
+    return;
+  }
+
+  array[vector_size] = element;
+  ++vector_size;
+  return;
 }
 
 template <class T>
@@ -157,16 +177,15 @@ void Vector<T>::insert(size_t index,T element){
     throw std::out_of_range("out_of_range");
     return;
   }
-  
-  
-  if(vector_size>=array_size){ 
+ 
+  if(vector_size>=array_size){
+    //Hamnar här
     tmp_array = new T[array_size*2];
     array_size*=2;
   }else{
     tmp_array = new T[array_size];
   }
   
-
   for(size_t i=0;i<index;++i){
     tmp_array[i]=array[i]; 
   }
@@ -183,7 +202,7 @@ void Vector<T>::insert(size_t index,T element){
 
 template <class T>
 void Vector<T>::erase(size_t index){
-  if(index<0 || index>=vector_size){
+  if(index <0 || index>=vector_size){
     throw std::out_of_range("out_of_range");
     return;
   }
@@ -203,5 +222,4 @@ void Vector<T>::clear(void){
   vector_size=0;
 }
 
-
-#endif  __BAJS__
+#endif __BAJS__

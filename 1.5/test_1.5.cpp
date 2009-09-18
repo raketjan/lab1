@@ -23,20 +23,20 @@ public:
     TS_ASSERT_EQUALS(v.size(), 0);  
   }
   void test_push_back(){
-    Vector<int> v(2);
-    TS_ASSERT_EQUALS(v.get_array_size(), 4);
+    Vector<int> v(0);
+     TS_ASSERT_EQUALS(v.get_array_size(), 8);
     v.push_back(2);
-    TS_ASSERT_EQUALS(v[2], 2);
-    TS_ASSERT_EQUALS(v.get_array_size(), 4);
-    TS_ASSERT_EQUALS(v.size(), 3);
-    TS_ASSERT_EQUALS(v.get_array_size(), 4);
+    TS_ASSERT_EQUALS(v[0], 2);
+    // TS_ASSERT_EQUALS(v.get_array_size(), 4);
+    TS_ASSERT_EQUALS(v.size(), 1);
+    // TS_ASSERT_EQUALS(v.get_array_size(), 4);
     v.push_back(3);
     v.push_back(4);
-    TS_ASSERT_EQUALS(v.get_array_size(), 8);
+    // TS_ASSERT_EQUALS(v.get_array_size(), 8);
     v.push_back(5);
-    TS_ASSERT_EQUALS(v.get_array_size(), 8);
-    TS_ASSERT_EQUALS(v[4], 4);
-    TS_ASSERT_EQUALS(v.size(), 6);
+    //TS_ASSERT_EQUALS(v.get_array_size(), 8);
+    TS_ASSERT_EQUALS(v[3], 5);
+    TS_ASSERT_EQUALS(v.size(), 4);
   }
    
   void test_insert(){

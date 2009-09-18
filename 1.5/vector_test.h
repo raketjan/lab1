@@ -103,15 +103,18 @@ public:
         TS_ASSERT_EQUALS(a[15], 15);
     }
     void test_push_back()
-    {
-        Vector<int> a(3);
-        a.push_back(1);
-        a.push_back(2);
-        a.push_back(3);
-        a.push_back(4);
+    {     
+      Vector<int> c(1);
+      c.push_back(1);
+      Vector<int> a(1);
+      a.push_back(1);
+      a.push_back(2);
+      a.push_back(3);
+      a.push_back(4);
 
-        Vector<int> b;
-        b.push_back(15);
+      Vector< Vector<int> > b(1);
+      b.push_back(a);
+      TS_ASSERT_EQUALS(b.size(), 2);
     }
 
     void test_insert()
