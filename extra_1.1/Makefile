@@ -1,16 +1,20 @@
 CC=g++
 FLAGS=-Wall -g
-VSN=1.1
 
-test:
-	$(CC) $(FLAGS) -c matrix.cpp
-	../cxxtest/cxxtestgen.py --error-printer -o $(VSN).cpp test_matrix_$(VSN).h 
-	$(CC) $(FLAGS) -o test_matrix_$(VSN) -I ../cxxtest/ $(VSN).cpp
-	./test_matrix_$(VSN)
+all: test_matrix
+
+test:test.o
+	$(CC) $(FLAGS) -o $@ $@.cpp	
+
+test_matrix: matrix.o matrix.h matrix.cpp test_matrix.h
+	cxxtestgen.pl --error-printer -o $@.cpp $@.h 
+	$(CC) $(FLAGS) -o $@ $@.cpp
+
+%.o:%.cpp
+	$(CC) $(CFLAGS) -c $<
 
 valgrind:test
-	valgrind --leak-check=yes ./test_matrix_$(VSN)
+	valgrind --leak-check=yes ./test_matrix
 
 clean:
-	rm -f *.o test_matrix_$(VSN) vector_test_runner.cpp $(VSN).cpp
-	rm -r test_matrix_$(VSN) vector_test_runner
+	rm -f *.o test_matrix
