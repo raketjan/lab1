@@ -13,7 +13,7 @@ test_matrix: matrix.o matrix.h matrix.cpp test_matrix.h
 %.o:%.cpp
 	$(CC) $(CFLAGS) -c $<
 
-valgrind:test
+valgrind:test_matrix
 	valgrind --leak-check=yes ./test_matrix
 
 clean:
