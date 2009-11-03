@@ -53,23 +53,30 @@ public:
     m2[1][0]=5;
     m2[1][1]=1;
     std::cout << m1-m2 << endl;
-    
   }
 
   void test_equals(){
+    std::cout << "test_equals" << endl;
     Matrix m1(5,2);
     Matrix m2(2,2);
     m1[0][0]=2;
     m1[0][1]=9;
-    m1[1][0]=2;
+    m1[1][0]=10;
     m1[1][1]=3;
     m2[0][0]=5;
     m2[0][1]=2;
     m2[1][0]=5;
-    m2[1][1]=1;
-    m1=m2;
+    m2[1][1]=50;
     std::cout << m1 << endl;
     std::cout << m2 << endl;
+    m1=m2;
+    TS_ASSERT_EQUALS(m1[0][0],5);
+    TS_ASSERT_EQUALS(m1[0][1],2);
+    TS_ASSERT_EQUALS(m1[1][0],5);
+    TS_ASSERT_EQUALS(m1[1][1],50);
+    std::cout << m1 << endl;
+    std::cout << m2 << endl;
+
     Matrix m3(2,2);
     Matrix m4(2,2);
     m3=m4;
@@ -96,5 +103,11 @@ public:
     std::cout << m1.T() << endl;
 
   
+  }
+  
+  void test_istream(){
+    Matrix m;
+    cin >> m;
+    std::cout << m << endl;
   }
 };

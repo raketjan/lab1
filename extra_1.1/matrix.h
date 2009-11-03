@@ -3,16 +3,17 @@
 #include <iostream>
 #include <cstddef>
 #include <stdlib.h>
+#include <iterator>
 #include "vector.h"
 
 class Matrix{
   friend std::ostream & operator<<(std::ostream &,const Matrix &); 
   friend std::istream & operator>>(const Matrix &,std::istream &);
-   size_t matrix_size;
-  Vector< Vector <int>  * > matrix;
  public:
   size_t cols;
   size_t rows; 
+  size_t matrix_size;
+  Vector< Vector <int>  * > matrix;
   Matrix();
   Matrix(const Matrix &);
   Matrix(int, int);
