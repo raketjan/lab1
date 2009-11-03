@@ -58,28 +58,23 @@ Vector<bool>::Vector(const Vector<bool> & ref):
 
 /* = */
 
-// Vector<bool> & Vector<bool>::operator=(const Vector<bool> & v2){
-//   // ta hand om selfassignment (a = a)
-//   if (&v2 == this) return *this;
-
-//   // fall 1 lika stora
-//   if (vector_size == v2.vector_size) {
-//     for (size_t i = 0; i < v2.vector_size; ++i) {
-//       array[i] = v2[i];
-//     }
-//     return *this;
-//   } else {    
-//     //olika stora, skaffa nytt utrymme
-//     delete [] array;
-//     array = new T[v2.vector_size*2];
-//     vector_size = v2.vector_size;
-//     array_size=vector_size*2;
-//     for (size_t i = 0; i < v2.vector_size; ++i) {
-//       array[i] = v2[i];
-//     }
-//     return *this;
-//   }
-// }
+Vector<bool> & Vector<bool>::operator=(const Vector<bool> & v2){
+  // ta hand om selfassignment (a = a)
+  if (&v2 == this) return *this;
+  
+  delete [] array;
+  unsigned int * tmp = new unsigned int[v2.int_array_size];
+  
+  for(size_t i = 0;i<v2.int_array_size;++i){
+    tmp[i]=v2.array[i];
+  }
+  
+  int_array_size = v2.int_array_size;
+  bool_array_size = v2.bool_array_size;
+  vector_size=v2.vector_size;
+  array=tmp;
+  return *this;
+}
 
 
 Vector<bool>::reference Vector<bool>::operator[](size_t index) {
@@ -147,11 +142,23 @@ Vector<bool>::reference & Vector<bool>::reference::operator=(const bool b){
 }
 
 Vector<bool>::reference & Vector<bool>::reference::operator=(const reference & r){
-  std::cout << "Set to reference " << std::endl;
-  array_p=r.array_p;
-  int_index=r.int_index;
-  bit_index=r.bit_index;
+  //hitta biten i r.array_p
+  //och se om om true / false 
+  bool b = ((r.array_p[r.int_index]>>r.bit_index)&1) && true;
+    
+  int x=1;
+  if(b==true){    
+    std::cout << "set true " << std::endl;
+    x=x<<bit_index;
+    array_p[int_index]=array_p[int_index]|x;
+  }else{
+    std::cout << "set false " << std::endl;
+    x=x<<bit_index;
+    x=~x;
+    array_p[int_index]=array_p[int_index]&x;
+  }
   return *this;
+  
 }
 
 Vector<bool>::reference::operator bool() const{

@@ -339,6 +339,29 @@ public:
       TS_ASSERT_EQUALS(v[1]==true, true);
     }
 
+    void test_bla(){
+      Vector<bool> v1;
+      Vector<bool> v2;
+      v1.push_back(true);
+      v2.push_back(false);
+      
+      v1[0] = v2[0];
+      
+      //v1=v2;
+      TS_ASSERT_EQUALS(v1[0]==false, true);
+    }
+
+    void test_likame(){
+      Vector<bool> v1;
+      Vector<bool> v2;
+      v1.push_back(true);
+      v2.push_back(false);
+      v2.push_back(false);
+      
+      v1 = v2;
+      
+      TS_ASSERT_EQUALS(v1[1]==false, true);
+    }
     
     void x_test_bool_assignment_string()
     {
