@@ -20,4 +20,4 @@ valgrind:test_matrix
 	valgrind --leak-check=yes ./test_matrix
 
 clean:
-	rm -f *.o test_matrix
+	rm -f *.o test_matrix test maze maze_generator test_matrix.cpp

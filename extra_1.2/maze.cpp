@@ -183,21 +183,6 @@ Matrix solve(const char ** maze){
   }
   
   
-  //get start
-  /*
-   int start_row;
-   int start_col;
-  for(size_t i=0;i<m.rows;++i){
-    if(m[i][0] == ' '){
-      m[i][0] = 'S';
-      break;
-    }else if(m[i][m.cols-1] == ' '){
-      m[i][(m.cols-1)] = 'S';
-      break;
-    }
-  }
-  */
-  
   start_pos x = find(m);
   
   help_solve(m,x.row,x.col,x.row,x.col);
