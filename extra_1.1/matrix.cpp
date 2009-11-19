@@ -158,33 +158,26 @@ std::ostream & operator<<(std::ostream & os ,const Matrix & m) {
 }
 
 std::istream & operator>>(std::istream & is ,Matrix & m){
-  /*  Matrix tmp;
-  int rader = 0;
-  int kolumner = 0;
-  int tjo;
-  char c;
-  std::istream iskopia(is);
-  iskopia >> c;  // äter upp [
-  while (iskopia >> tjo) { // kolla antal kolumner
-    ++kolumner;
-  }
-  iskopia >> c; // ät ; eller ]
-  ++rader;
-  while (c != ']') {
-    for (int i = 0; i < kolumner; ++i) {
-      iskopia >> tjo;
+  char x[10];
+  Vector< Vector<int> *> * vv = new Vector<Vector<int> *>();
+  Vector<int> * v = new Vector<int>();
+  while(is >> x){
+    
+    if(x[0]==']') {
+      vv->push_back(v);
+      break;
     }
-    ++rader; 
-  }  
-  tmp = new Matrix(rader,kolumner);
-  is >> c;  // äter upp [
-  for(int i = 0; i < m.cols; ++i) {
-    for (int j = 0; j < m.rows; ++j) {
-      is >> tmp[i][j];
+    if(x[0]==';'){
+      vv->push_back(v);
+      v = new Vector<int>;
     }
-    is >> c;  // äter upp ;
+    if(x[0]!='['&&x[0]!=']'&&x[0]!=';'){
+      v->push_back(atoi(x));
+    }
   }
-  m = tmp; */
+  m.rows=vv->size();
+  m.cols=v->size();
+  m.matrix=*vv;
   return is;
 }
 

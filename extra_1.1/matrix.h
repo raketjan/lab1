@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <iterator>
 #include "vector.h"
-
+#include <sstream>
 class Matrix{
   friend std::ostream & operator<<(std::ostream &,const Matrix &); 
   friend std::istream & operator>>(const Matrix &,std::istream &);

@@ -108,6 +108,8 @@ public:
   void test_istream(){
     Matrix m;
     cin >> m;
+    std::cout << m.rows << endl;
+    std::cout << m.cols << endl;
     std::cout << m << endl;
   }
 };
